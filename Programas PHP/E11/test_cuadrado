@@ -1,0 +1,12 @@
+<?php 
+
+include 'cuadrado.php';
+
+
+$objCuadrado = new Cuadrado([3,1], [2,2], [2,2], [2,0]);
+
+
+$objCuadrado->ejecutarDesplazamiento(2);
+
+echo $objCuadrado;
+
