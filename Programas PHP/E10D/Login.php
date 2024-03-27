@@ -67,12 +67,6 @@ class Login {
         return $contraseña;
     }
 
-    // Funcion para cambiar contraseña, debe validad si la contraseña ya fue utilizada, es decir si ya esta en el arraglo 
-    // Primero la la contraseña ingresada tiene que ser la misma que la actual , primero tengo que saber la clave actual
-    //          saber el indice del usuario para buscar el valor en ele arreglo calves
-    //          con el indice tengo que buscar la clave y compararlar con la clave ingresada y si es la misma valida al cambio de clave
-    // La nueva tiene que ser distitna de la contraseña actual y de las almacenadas anteriores 
-    // si se cumple todo lo anterior, llamar al metodo setPass para modificar la contraseña
 
     public function cambiarContraseña($nombreUsuario, $claveActual, $nCont){
         // $this->setUsers($nombreUsuario); 
