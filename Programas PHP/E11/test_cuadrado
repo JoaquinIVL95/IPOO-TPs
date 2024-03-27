@@ -3,10 +3,13 @@
 include 'cuadrado.php';
 
 
-$objCuadrado = new Cuadrado([3,1], [2,2], [2,2], [2,0]);
+$objCuadrado = new Cuadrado([2,2], [2,4], [4,4], [4,2]);
 
+echo $objCuadrado->area() . "\n";
 
 $objCuadrado->ejecutarDesplazamiento(2);
+echo $objCuadrado . "\n";
 
-echo $objCuadrado;
-
+echo $objCuadrado->expandirVertices(2)  . "\n";
+echo $objCuadrado->area() . "\n";
+echo $objCuadrado . "\n";

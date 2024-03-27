@@ -99,6 +99,34 @@ Class Cuadrado{
         return $nuevoPunto;
     }
 
+    public function expandirVertices($d) {
+        // Calcular el centro del cuadrado
+        $centroX = ($this->v1[0] + $this->v2[0] + $this->v3[0] + $this->v4[0]) / 4;
+        $centroY = ($this->v1[1] + $this->v2[1] + $this->v3[1] + $this->v4[1]) / 4;
+    
+        // Calcular la diferencia entre cada vértice y el centro
+        $diferenciaV1X = $this->v1[0] - $centroX;
+        $diferenciaV1Y = $this->v1[1] - $centroY;
+        $diferenciaV2X = $this->v2[0] - $centroX;
+        $diferenciaV2Y = $this->v2[1] - $centroY;
+        $diferenciaV3X = $this->v3[0] - $centroX;
+        $diferenciaV3Y = $this->v3[1] - $centroY;
+        $diferenciaV4X = $this->v4[0] - $centroX;
+        $diferenciaV4Y = $this->v4[1] - $centroY;
+    
+        // Ajustar cada vértice
+        $nuevoV1 = [$this->v1[0] + $diferenciaV1X * $d, $this->v1[1] + $diferenciaV1Y * $d];
+        $nuevoV2 = [$this->v2[0] + $diferenciaV2X * $d, $this->v2[1] + $diferenciaV2Y * $d];
+        $nuevoV3 = [$this->v3[0] + $diferenciaV3X * $d, $this->v3[1] + $diferenciaV3Y * $d];
+        $nuevoV4 = [$this->v4[0] + $diferenciaV4X * $d, $this->v4[1] + $diferenciaV4Y * $d];
+    
+        // Aplicar los cambios
+        $this->setV1($nuevoV1);
+        $this->setV2($nuevoV2);
+        $this->setV3($nuevoV3);
+        $this->setV4($nuevoV4);
+    }
+
 
     public function ejecutarDesplazamiento($d){
         $nuevoV1= $this->desplazar($d, $this->getv1());
@@ -114,15 +142,16 @@ Class Cuadrado{
         return;
     }
 
+  
+    public function agrandar($d) {
+        // Desplazar cada vértice del cuadrado
+        $this->ejecutarDesplazamiento($d);
 
-    // public function productoArray(){
-    //     $a = $this->getV1();
-    //     $b = $this->getV2();
+        // Recalcular el área después del agrandamiento
+        $nuevaArea = $this->area();
 
-    //     $producto = array_product($a,$b); 
-
-    //     return $producto;
-    // }
+        return $nuevaArea;
+    }
 
 
 
