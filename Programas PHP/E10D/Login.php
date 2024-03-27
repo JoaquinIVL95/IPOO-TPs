@@ -26,7 +26,7 @@ class Login {
 
     public function getPass() {
         return $this->claves;
-    }
+    }// este metodo deberia ser un metodo aparte, el metodo setX debe ser  para asignar un elemnto completo 
     public function setPass($contrasena, $indice){
         $nuevoValor = array($indice => $contrasena);
         $this->claves = array_replace($this->getPass(), $nuevoValor);
