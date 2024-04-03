@@ -1,0 +1,4 @@
+<?php
+
+
+$objPersona = new Persona();
