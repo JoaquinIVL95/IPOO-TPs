@@ -1,77 +1,61 @@
 <?php
 
-Class Teatro{
+class Teatro {
+    private $nombre;
+    private $direccion;
+    private $funciones;
 
-
-    private $nomTeatro = [];
-    private $dir = [];
-    private $func = [];
-
-    public function __construct($nombre,$direccion,$funcion)
-    {
-        $this->nomTeatro = $nombre;
-        $this->dir = $direccion;
-        $this->func = $funcion;
+    public function __construct($nombre, $direccion, $funciones) {
+        $this->nombre = $nombre;
+        $this->direccion = $direccion;
+        $this->funciones = $funciones;
     }
 
-    public function getNomTeatro(){
-        return $this->nomTeatro;
-    }
-    public function setNomTeatro($n){
-        $this->nomTeatro= array_push($n);
-    }
-    
-    public function getDir()
-    {
-        return $this->dir;
-    }
-    public function setDir($d)
-    {
-        $this->dir = array_push($d);
+    // Métodos para obtener y cambiar el nombre del teatro
+    public function getNombre() {
+        return $this->nombre;
     }
 
-    public function getFunc(){
-        return $this->func;
-    }
-    public function setFunc($f,$p){
-        $this->func = array_replace($f,$p);
+    public function setNombre($nombre) {
+        $this->nombre = $nombre;
     }
 
-    public function cambiarNombreTeatro($nuevoNombre){
-        // $nomActual =$this->getNomTeatro();
-        $this->setNomTeatro($nuevoNombre);
-        
+    // Métodos para obtener y cambiar la dirección del teatro
+    public function getDireccion() {
+        return $this->direccion;
     }
 
-    public function cambiarDireTeatro($nuevaDir){
-        $this->setDir($nuevaDir);
+    public function setDireccion($direccion) {
+        $this->direccion = $direccion;
     }
 
-    public function agregarFuncion($nombreFun, $precio){
-        $this->setFunc($nombreFun,$precio);
+    // Métodos para obtener y cambiar las funciones del teatro
+    public function getFunciones() {
+        return $this->funciones;
+    }
+
+    public function setFunciones($funciones) {
+        $this->funciones = $funciones;
+    }
+
+    // Método para cambiar el nombre y precio de una función específica
+    public function cambiarFuncion($indice, $nombre, $precio) {
+        $this->funciones[$indice]["nombre"] = $nombre;
+        $this->funciones[$indice]["precio"] = $precio;
     }
 
     private function devolverArreglos($arreglo){
         $cadena = "";
-        foreach($arreglo as $elemento){
-            $cadena = $cadena . "|". $elemento;
-            
+        foreach ($this->getFunciones() as $indice => $funcion) {
+            $cadena =  "Función " . ($indice + 1) . ": " . $funcion["nombre"] . ", Precio: $" . $funcion["precio"] . "\n";
         }
         return $cadena;
     }
-
-
     public function __toString()
     {
-        $nombre = $this->devolverArreglos($this->getNomTeatro());
-        $direccion = $this->devolverArreglos($this->getDir());
-        $funcion =$this->devolverArreglos($this->getFunc());
-        
-        return "Teatro: " . $nombre . "\n" .
-                "Direccion: " . $direccion . "\n" . 
-                "Funciones y precios: " . $funcion . "\n" .
-                print_r ($funcion);
-            }
+        $cadena = $this->devolverArreglos($this->getFunciones());
+        return $cadena;
+    }
 
-            
 }
+
