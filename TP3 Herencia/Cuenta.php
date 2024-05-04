@@ -5,15 +5,12 @@ Class Cuenta{
 
     private $objPropietario;
     private $saldoDisponible;
-    private $tipoCuenta;
-    private $montoAlDescubierto;
 
-    public function __construct($objCliente , $saldoDisponible, $tipoCuenta, $montoAlDescubierto)
+
+    public function __construct($objCliente , $saldoDisponible)
     {
         $this->objPropietario = $objCliente;
         $this->saldoDisponible=$saldoDisponible;
-        $this->tipoCuenta = $tipoCuenta;
-        $this->montoAlDescubierto = $montoAlDescubierto;
     }
 
 
@@ -34,23 +31,9 @@ Class Cuenta{
         $this->saldoDisponible = $saldoDisponible;
     }
 
-    public function getTipoCuenta()
-    {
-        return $this->tipoCuenta;
-    }
-    public function setTipoCuenta($tipoCuenta)
-    {
-        $this->tipoCuenta = $tipoCuenta;
-    }
+    
 
-    public function getMontoAlDescubierto()
-    {
-        return $this->montoAlDescubierto;
-    }
-    public function setMontoAlDescubierto($montoAlDescubierto)
-    {
-        $this->montoAlDescubierto = $montoAlDescubierto;
-    }
+    
 
     public function saldoCuenta(){
         $saldo = $this->getSaldoDisponible();
@@ -77,13 +60,13 @@ Class Cuenta{
         return $retiroRealizado;
     }
 
+    
+
 
     public function __toString()
     {
-        return "Numero de cuenta " .  $this->getObjPropietario()->getNumCliente(). "\n" . 
-        "Tipo de Cuenta: " . $this->getTipoCuenta() . "\n" .
-        "Saldo disponible: " . $this->getSaldoDisponible() .  "\n" .  
-        "Monto disponible para trasnferencia: " . $this->getMontoAlDescubierto();
+        return "Propietario: " .  $this->getObjPropietario(). "\n" .
+        "Saldo disponible: " . $this->getSaldoDisponible() .  "\n" ;
     }
  
 

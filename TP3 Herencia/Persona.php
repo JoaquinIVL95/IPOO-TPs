@@ -49,6 +49,6 @@ Class Persona {
 
     public function __toString()
     {
-        return "Soy el usuario: ". $this->getNombre()." ". $this->getApellido() . ", Dni: " . $this->getDni();
+        return $this->getNombre()." ". $this->getApellido() . ", Dni: " . $this->getDni();
     }
 }
