@@ -24,18 +24,31 @@ function testCrearCliente(){
     $objCuentasAhorro = [$objCajaAhorro1, $objCajaAhorro2 , $objCajaAhorro3];
 
     $objBanco = new Banco ($objcuentasCtes , $objCuentasAhorro , 0 , $objColClientes);
-
     $nuevoCliente = new Cliente("38892402" , "fabian" , "perez", 24);
+    
     $cargarCliente = $objBanco->incorporarCliente($nuevoCliente);
     if($cargarCliente){
-        echo "Cliente ya existente";
+        echo "Cliente ya existente \n\n";
     }else{
-        echo "Cliente añadido";
+        echo "Cliente añadido \n\n";
+    }
+    
+    $nuevaCuentaCte = $objBanco->incorporarCuentaCorriente(22, 300);
+    if($nuevaCuentaCte){
+        echo "Cuenta creada \n\n";
+    } else {
+        echo "Error al crear la cuenta de Corriente \n\n";
     }
 
+    $nuevaCajaAhorro = $objBanco->incorporarCajaDeAhorro(23);
+    if($nuevaCajaAhorro){
+        echo "Caja de ahorro creada \n\n";
+    } else {
+        echo "Error al crear la caja de ahorro \n\n";
+    }
+    
+    
     echo $objBanco;
-
-    echo $objBanco->buscarCliente(23);
     
 
 }

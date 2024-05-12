@@ -86,16 +86,13 @@ Class Banco{
 
     public function buscarCliente($numCliente){
         $colClientes = $this->getColCliente();
-        // $numClienteExistente = [];
+        
         $clienteExistente = false;
         $cantClientes = count($this->getColCliente());
         $indice = 0;
         $indiceCliente = -1;
         
-        // foreach($colClientes as $cliente){
-        //     $numClienteExistente = $cliente->getNumCliente();
-        // }
-
+        
         while ($indice <= $cantClientes && $clienteExistente != true){
             if ($numCliente == $colClientes[$indice]->getNumCliente()){
                 $clienteExistente = true;
@@ -103,22 +100,44 @@ Class Banco{
                 
             }else{
                 $indice++;
-                echo "perro";
+                
             }
 
         }
-        return $indiceCliente . " numero indice";
+        return $indiceCliente;
     }
 
 
     public function incorporarCuentaCorriente($numCliente , $montoDescubierto){
-        $colClientes = $this->getColCliente();
         $clienteExistente = $this->buscarCliente($numCliente);
+        $cliente = $this->getColCliente()[$clienteExistente];
+        $cuentaCreada = false;
+        $colCtaCte = $this->getColCuentaCorriente();
 
-        if($clienteExistente != null){
-            $cliente = $this->getColCliente()[$clienteExistente];
-            echo $this->leerArreglos($cliente);
+        if($clienteExistente >-1){
+            $nuevaCuenta = new ctaCte($montoDescubierto,$cliente, 100);
+            $cuentaCreada = true;
+            $colCtaCte[] = $nuevaCuenta;
+            $this->setColCuentaCorriente($colCtaCte);
         }
+
+        return $cuentaCreada;
+    }
+
+    public function incorporarCajaDeAhorro($numCliente){
+        $clienteExistente = $this->buscarCliente($numCliente);
+        $cliente = $this->getColCliente()[$clienteExistente];
+        $cuentaCreada = false;
+        $colCajaAhorro = $this->getColCajaAhorro();
+
+        if($clienteExistente >-1){
+            $nuevaCuenta = new ctaAhorro($cliente, 100);
+            $cuentaCreada = true;
+            $colCajaAhorro[] = $nuevaCuenta;
+            $this->setColCajaAhorro($colCajaAhorro);
+        }
+
+        return $cuentaCreada;
     }
 
 
