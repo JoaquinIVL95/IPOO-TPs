@@ -27,10 +27,10 @@ Class Producto {
         $this->codBarra = $codBarra;
     }
 
-    public function getDescProducto(){
+    public function getDescripcionProducto(){
         return $this->descProducto;
     }
-    public function setDescProducto($descProducto){
+    public function setDescripcionProducto($descProducto){
         $this->descProducto = $descProducto;
     }
 
@@ -62,16 +62,28 @@ Class Producto {
         $this->objRubroP = $objRubroP;
     }
     
+    public function darPrecioVenta(){
+        
+        $total= 0;
+        $precioCompra = $this->getPrecioCompra();
+        $porcGanancia = $this->getRubroP()->getPorcGanancia();
+        $porcIva = $this->getPorcIva();
+
+        $total = $precioCompra * (1 + $porcGanancia / 100) * (1 + $porcIva / 100);
+
+        return $total;
+    }
+    
     public function __toString()
     {
         return
-            "Codigo de barra: " . $this->getCodBarra() . "\n" . 
-            "Descripcion del producto: " . $this->getDescProducto() . "\n" . 
+            "Codigo de barra: " . $this->getCodBarra() . "\n" .  
             "Stock: " . $this->getStock(). "\n" . 
             "Porcentaje de IVA: " . $this->getPorcIva() . "\n" . 
             "Precio de compra: " . $this->getPrecioCompra() . "\n" .
             "Pertenece al " . $this->getRubroP() . "\n" ;
     }
+
 
 
 }
